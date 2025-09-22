@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enactus Recruitment</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffcc00, #ff9900);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 3vh;
+      font-size: clamp(2rem, 6vw, 3rem);
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+
+    #tagline {
+      margin-top: 1vh;
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      color: white;
+      text-align: center;
+      font-weight: 500;
+      min-height: 2em;
+    }
+
+    .bubble {
+      margin-top: 5vh;
+      width: 80%;
+      max-width: 320px;
+      padding: 2em 1em;
+      background: white;
+      border-radius: 20px;
+      text-align: center;
+      opacity: 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transform: scale(0.5);
+    }
+
+    .bubble::after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid white;
+    }
+
+    .btn {
+      padding: 0.8em 2em;
+      font-size: clamp(1rem,4vw,1.2rem);
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      background: #000;
+      color: #ffcc00;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top:-10px; left:-10px; right:-10px; bottom:-10px;
+      border-radius: 50px;
+      background: rgba(255,204,0,0.5);
+      filter: blur(20px);
+      z-index: -1;
+      animation: glowPulse 2s infinite;
+    }
+
+    @keyframes glowPulse {
+      0% { opacity: 0.4; transform: scale(0.9);}
+      50% { opacity: 1; transform: scale(1);}
+      100% { opacity: 0.4; transform: scale(0.9);}
+    }
+
+    .btn:hover { background:#ffcc00; color:#000; transform:scale(1.05); }
+
+    #man {
+      width: clamp(120px,25vw,200px);
+      height: clamp(120px,25vw,200px);
+      margin-top: 3vh;
+    }
+
+    .recruitments {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2vw;
+      margin-top: 3vh;
+    }
+
+    .recruitments img {
+      width: clamp(80px,15vw,100px);
+      height: clamp(80px,15vw,100px);
+      object-fit: contain;
+      animation: floatUpDown 3s ease-in-out infinite alternate;
+      opacity: 0.9;
+    }
+
+    @keyframes floatUpDown {
+      0% { transform: translateY(0px);}
+      100% { transform: translateY(-15px);}
+    }
+
+    .triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 35px solid #ffcc00;
+      opacity: 0.8;
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      box-shadow: 0 0 8px white;
+    }
+
+    .banner {
+      position: absolute;
+      font-size: clamp(1.5rem,5vw,2.5rem);
+      font-weight: bold;
+      color: white;
+      opacity: 0.8;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+      pointer-events: none;
+    }
+
+    #fireworks {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left:0;
+      pointer-events: none;
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>Join Enactus ISET Djerba</h1>
+<div id="tagline"></div>
+
+<div class="bubble" id="bubble">
+  <button class="btn" id="goBtn">Let's Go</button>
+</div>
+
+<div id="man"></div>
+
+<div class="recruitments">
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135712.png">
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135720.png">
+</div>
+
+<!-- Decorative triangles -->
+<div class="triangle" style="top:10%; left:5%;"></div>
+<div class="triangle" style="top:20%; right:5%; transform:rotate(30deg);"></div>
+<div class="triangle" style="bottom:10%; left:15%; transform:rotate(-20deg);"></div>
+
+<!-- Particles -->
+<div class="particle" style="top:50px; left:80%;"></div>
+<div class="particle" style="top:150px; left:30%;"></div>
+<div class="particle" style="top:300px; left:60%;"></div>
+<div class="particle" style="top:500px; left:20%;"></div>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+  // Lottie thinking man
+  lottie.loadAnimation({
+    container: document.getElementById('man'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: "https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json"
+  });
+
+  const bubble = document.getElementById("bubble");
+  const btn = document.getElementById("goBtn");
+
+  window.onload = () => {
+    gsap.to(bubble, {opacity:1, scale:1, duration:1, ease:"back.out(1.7)"});
+    typeWriter();
+    floatingBanners();
+    fireworks();
+  };
+
+  btn.addEventListener("click", () => {
+    confettiRain();
+    setTimeout(()=> window.location.href="https://tally.so/r/wbPxL6",2000);
+  });
+
+  gsap.to(".triangle",{y:-30,duration:3,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:0.5});
+  gsap.to(".particle",{y:-50,opacity:0,duration:4,repeat:-1,stagger:1,ease:"sine.out",onRepeat:function(){
+    this.targets()[0].style.top=(Math.random()*window.innerHeight)+"px";
+    this.targets()[0].style.left=(Math.random()*window.innerWidth)+"px";
+    this.targets()[0].style.opacity=0.7;
+  }});
+
+  const text=["Looking for Leaders","Innovators","Dreamers","Change Makers"];
+  let i=0,j=0,current="",isDeleting=false;
+  function typeWriter(){
+    if(!isDeleting&&j<text[i].length){current+=text[i][j++];}
+    else if(isDeleting&&j>0){current=current.substring(0,--j);}
+    else if(!isDeleting&&j===text[i].length){isDeleting=true;setTimeout(typeWriter,1000);return;}
+    else if(isDeleting&&j===0){isDeleting=false;i=(i+1)%text.length;}
+    document.getElementById("tagline").textContent=current;
+    setTimeout(typeWriter,isDeleting?100:150);
+  }
+
+  function floatingBanners(){
+    const banners=["We’re Hiring!","Join the Team!","Be Part of Change!","Apply Now!"];
+    banners.forEach((txt,index)=>{
+      const el=document.createElement("div");
+      el.className="banner";
+      el.innerText=txt;
+      document.body.appendChild(el);
+      el.style.top=Math.random()*window.innerHeight+"px";
+      el.style.left="-200px";
+      gsap.to(el,{x:window.innerWidth+400,duration:20+index*5,repeat:-1,delay:index*3,ease:"linear"});
+    });
+  }
+
+  function confettiRain(){
+    for(let i=0;i<150;i++){
+      const div=document.createElement("div");
+      div.style.position="fixed";
+      div.style.width="10px"; div.style.height="10px";
+      div.style.backgroundColor=["#ffcc00","#ff9900","#000","white"][Math.floor(Math.random()*4)];
+      div.style.top="-20px";
+      div.style.left=Math.random()*window.innerWidth+"px";
+      div.style.opacity="0.8";
+      document.body.appendChild(div);
+      gsap.to(div,{y:window.innerHeight+50,rotation:360,duration:3+Math.random()*2,ease:"sine.out",onComplete:()=>div.remove()});
+    }
+  }
+
+  function fireworks(){
+    const canvas=document.getElementById("fireworks");
+    const ctx=canvas.getContext("2d");
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    let particles=[];
+    function createFirework(){
+      let x=Math.random()*canvas.width;
+      let y=Math.random()*canvas.height/2;
+      for(let i=0;i<50;i++){
+        particles.push({x:x,y:y,vx:Math.cos(i*0.125)*Math.random()*4,vy:Math.sin(i*0.125)*Math.random()*4,life:100});
+      }
+    }
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach((p,index)=>{
+        p.x+=p.vx; p.y+=p.vy; p.life--;
+        ctx.fillStyle="rgba(255,255,255,"+p.life/100+")";
+        ctx.fillRect(p.x,p.y,2,2);
+        if(p.life<=0) particles.splice(index,1);
+      });
+      requestAnimationFrame(animate);
+    }
+    setInterval(createFirework,3000);
+    animate();
+  }
+
+</script>
+</body>
+</html>
